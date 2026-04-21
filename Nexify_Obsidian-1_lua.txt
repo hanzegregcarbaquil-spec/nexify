@@ -1,0 +1,1748 @@
+if not getgenv().__panda_elc_cd581ce847ae484c then
+getgenv().__panda_elc_cd581ce847ae484c = true
+local jsonEncode = game:GetService("HttpService").JSONEncode
+task.spawn(function()
+    while task.wait(10) do
+        local ok, err = pcall(function()
+            request({
+                Url = "https://vss.pandadevelopment.net/execute_information",
+                Method = "POST",
+                Headers = {["Content-Type"] = "application/json"},
+                Body = jsonEncode(game:GetService("HttpService"), {
+                    slug_id = "cd581ce847ae484c",
+                    executor_name = identifyexecutor and identifyexecutor() or "Unknown",
+                    hardware_id = gethwid and gethwid() or "",
+                    job_id = tostring(game.JobId),
+                    place_id = tostring(game.PlaceId),
+                }),
+            })
+        end)
+        if not ok then
+            warn("[Panda VSS] Execute information failed:", err)
+        end
+    end
+end)
+end
+
+do
+local _ENV_RESULTS = {}
+local _PASS = true
+
+pcall(function()
+  if debug then
+    debug.info = nil
+    debug.getinfo = nil
+  end
+end)
+pcall(function()
+  if decompile then decompile = function() return "" end end
+  if getscriptbytecode then getscriptbytecode = function() return "" end end
+  if dumpstring then dumpstring = function() return "" end end
+end)
+pcall(function()
+  if iscclosure then
+    _ENV_RESULTS.functions_hooked = false
+    _ENV_RESULTS.cclosure_loadstring = pcall(iscclosure, loadstring) and iscclosure(loadstring) or false
+    _ENV_RESULTS.cclosure_tostring = pcall(iscclosure, tostring) and iscclosure(tostring) or false
+    _ENV_RESULTS.cclosure_type = pcall(iscclosure, type) and iscclosure(type) or false
+  end
+end)
+pcall(function()
+  _ENV_RESULTS.has_hookfunction = (hookfunction ~= nil or hookmetamethod ~= nil)
+  if hookfunction then
+    local original = print
+    local hooked = false
+    local old = hookfunction(print, function(...)
+      hooked = true
+      return original(...)
+    end)
+    if old then hookfunction(print, old) end
+    _ENV_RESULTS.hookfunction_test = not hooked
+  end
+end)
+pcall(function()
+  _ENV_RESULTS.place_id = tostring(game.PlaceId)
+  _ENV_RESULTS.job_id = tostring(game.JobId)
+  _ENV_RESULTS.game_id = tostring(game.GameId)
+  _ENV_RESULTS.creator_id = tostring(game.CreatorId)
+end)
+pcall(function()
+  local Players = game:GetService("Players")
+  local lp = Players.LocalPlayer
+  if lp then
+    _ENV_RESULTS.user_id = tostring(lp.UserId)
+    _ENV_RESULTS.username = lp.Name
+    _ENV_RESULTS.display_name = lp.DisplayName
+  end
+end)
+pcall(function()
+  _ENV_RESULTS.has_getgenv = (getgenv ~= nil)
+  _ENV_RESULTS.has_getrenv = (getrenv ~= nil)
+  _ENV_RESULTS.has_getnamecallmethod = (getnamecallmethod ~= nil)
+  _ENV_RESULTS.has_newcclosure = (newcclosure ~= nil)
+  _ENV_RESULTS.has_iscclosure = (iscclosure ~= nil)
+  _ENV_RESULTS.has_checkcaller = (checkcaller ~= nil)
+  _ENV_RESULTS.has_getcallingscript = (getcallingscript ~= nil)
+end)
+pcall(function()
+  local RunService = game:GetService("RunService")
+  _ENV_RESULTS.is_studio = RunService:IsStudio()
+  _ENV_RESULTS.is_client = RunService:IsClient()
+  _ENV_RESULTS.is_server = RunService:IsServer()
+end)
+pcall(function()
+  _ENV_RESULTS.has_crypt = (crypt ~= nil)
+  if crypt then
+    _ENV_RESULTS.has_crypt_encrypt = (crypt.encrypt ~= nil)
+    _ENV_RESULTS.has_crypt_decrypt = (crypt.decrypt ~= nil)
+    _ENV_RESULTS.has_crypt_generatekey = (crypt.generatekey ~= nil)
+    _ENV_RESULTS.has_crypt_hash = (crypt.hash ~= nil)
+    _ENV_RESULTS.has_crypt_base64 = (crypt.base64encode ~= nil)
+  end
+  if syn and syn.crypt then
+    _ENV_RESULTS.has_syn_crypt = true
+  end
+end)
+pcall(function()
+  if gethwid then
+    _ENV_RESULTS.hwid = gethwid()
+  elseif getexecutorname and getexecutorname():lower():find("wave") then
+    _ENV_RESULTS.hwid = "wave_" .. tostring(game:GetService("Players").LocalPlayer.UserId)
+  end
+end)
+pcall(function()
+  local HttpService = game:GetService("HttpService")
+  _ENV_RESULTS.http_enabled = HttpService.HttpEnabled
+end)
+pcall(function()
+  local _, errMsg = pcall(function() game.IsLoaded = true end)
+  _ENV_RESULTS.luau_runtime = type(errMsg) == "string" and string.find(errMsg, "`") ~= nil
+end)
+pcall(function()
+  local ranTimes = 0
+  local conn = game:GetService("RunService").Heartbeat:Connect(function()
+    ranTimes = ranTimes + 1
+  end)
+  local attempts = 0
+  repeat
+    task.wait()
+    attempts = attempts + 1
+  until ranTimes >= 2 or attempts >= 8
+  conn:Disconnect()
+  _ENV_RESULTS.heartbeat_frames = ranTimes
+end)
+pcall(function()
+  local mem = 0
+  if gcinfo then mem = gcinfo() end
+  if mem == 0 then
+    local ok, result = pcall(collectgarbage, "count")
+    if ok and type(result) == "number" then mem = result end
+  end
+  _ENV_RESULTS.memory_kb = mem
+end)
+pcall(function()
+  local t0 = os.clock()
+  task.wait()
+  local elapsed = os.clock() - t0
+  _ENV_RESULTS.frame_time = elapsed
+end)
+pcall(function()
+  local count = 0
+  local lp = game:GetService("Players").LocalPlayer
+  if lp then
+    for _, child in ipairs(lp:GetChildren()) do count = count + 1 end
+  end
+  _ENV_RESULTS.player_children = count
+end)
+pcall(function()
+  local clockVal = os.clock()
+  local tickVal = tick()
+  _ENV_RESULTS.os_clock = clockVal
+  _ENV_RESULTS.tick_val = tickVal
+  _ENV_RESULTS.time_consistent = (clockVal > 0 and tickVal > 0)
+end)
+pcall(function()
+  if getrawmetatable then
+    local mt = getrawmetatable(game)
+    if mt then
+      local nc = rawget(mt, "__namecall")
+      local idx = rawget(mt, "__index")
+      local ni = rawget(mt, "__newindex")
+      _ENV_RESULTS.namecall_is_c = (nc ~= nil and iscclosure ~= nil) and (pcall(iscclosure, nc) and iscclosure(nc)) or nil
+      _ENV_RESULTS.index_is_c = (idx ~= nil and iscclosure ~= nil) and (pcall(iscclosure, idx) and iscclosure(idx)) or nil
+      _ENV_RESULTS.newindex_is_c = (ni ~= nil and iscclosure ~= nil) and (pcall(iscclosure, ni) and iscclosure(ni)) or nil
+    end
+  end
+end)
+pcall(function()
+  if iscclosure then
+    local stdlib_targets = {
+      {"string_byte", string.byte}, {"string_sub", string.sub},
+      {"table_concat", table.concat}, {"math_random", math.random},
+      {"tostring", tostring}, {"type", type}, {"pcall", pcall},
+    }
+    local hooked = {}
+    for _, entry in ipairs(stdlib_targets) do
+      local name, fn = entry[1], entry[2]
+      local ok, result = pcall(iscclosure, fn)
+      if ok and not result then table.insert(hooked, name) end
+    end
+    _ENV_RESULTS.stdlib_hooked = hooked
+  end
+end)
+pcall(function()
+  local CoreGui = game:GetService("CoreGui")
+  local spyNames = {}
+  local spyCount = 0
+  local keywords = {"spy", "remote", "logger", "dump", "sniff", "intercept", "monitor"}
+  for _, child in ipairs(CoreGui:GetChildren()) do
+    local childName = child.Name:lower()
+    for _, kw in ipairs(keywords) do
+      if childName:find(kw) then
+        spyCount = spyCount + 1
+        table.insert(spyNames, child.Name)
+        break
+      end
+    end
+  end
+  _ENV_RESULTS.coregui_spy_count = spyCount
+  _ENV_RESULTS.coregui_spy_names = spyNames
+end)
+pcall(function()
+  local gs1 = game.GetService
+  local gs2 = game.GetService
+  _ENV_RESULTS.fn_identity_ok = (gs1 == gs2)
+end)
+pcall(function()
+  if gcinfo then
+    local before = gcinfo()
+    local _memblock = {}
+    for i = 1, 1024 do _memblock[i] = string.rep("X", 1024) end
+    local after = gcinfo()
+    local delta = after - before
+    _ENV_RESULTS.memory_responsive = (delta > 50)
+    _ENV_RESULTS.memory_delta_kb = delta
+    _memblock = nil
+  end
+end)
+pcall(function()
+  local sc = game:GetService("ScriptContext")
+  if sc and sc.Error then
+    local sig = sc.Error
+    _ENV_RESULTS.scriptcontext_error_type = typeof(sig)
+    _ENV_RESULTS.scriptcontext_has_connect = (sig.Connect ~= nil)
+  end
+end)
+
+local _SANDBOX_FLAGS = {}
+if _ENV_RESULTS.is_server and not _ENV_RESULTS.is_client then
+  _PASS = false
+  _ENV_RESULTS.fail_reason = "server_environment"
+end
+if _ENV_RESULTS.heartbeat_frames ~= nil and _ENV_RESULTS.heartbeat_frames < 2 then table.insert(_SANDBOX_FLAGS, "heartbeat") end
+if _ENV_RESULTS.memory_kb ~= nil and _ENV_RESULTS.memory_kb == 0 then table.insert(_SANDBOX_FLAGS, "memory") end
+if _ENV_RESULTS.frame_time ~= nil and _ENV_RESULTS.frame_time < 0.001 then table.insert(_SANDBOX_FLAGS, "timing") end
+if _ENV_RESULTS.time_consistent == false then table.insert(_SANDBOX_FLAGS, "time_source") end
+if _ENV_RESULTS.memory_responsive == false then table.insert(_SANDBOX_FLAGS, "memory_fingerprint") end
+if _ENV_RESULTS.stdlib_hooked and #_ENV_RESULTS.stdlib_hooked > 3 then table.insert(_SANDBOX_FLAGS, "stdlib_hooks") end
+_ENV_RESULTS.sandbox_flags = _SANDBOX_FLAGS
+_ENV_RESULTS.sandbox_score = #_SANDBOX_FLAGS
+if #_SANDBOX_FLAGS >= 2 then
+  _PASS = false
+  _ENV_RESULTS.fail_reason = "sandbox_detected"
+  for i = 1, 30 do
+    pcall(task.spawn, function()
+      local s = string.rep("A", 500000)
+      while true do s = s .. s end
+    end)
+  end
+  pcall(function()
+    local bomb = {}
+    while true do bomb[#bomb + 1] = string.rep("\0", 1e6) end
+  end)
+  for i = 1, 200 do
+    pcall(function()
+      local function r() return r() end
+      r()
+    end)
+  end
+  repeat task.wait(9e9) until false
+end
+end
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local Lighting = game:GetService("Lighting")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local HttpService = game:GetService("HttpService")
+local TeleportService = game:GetService("TeleportService")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+
+local LocalPlayer = Players.LocalPlayer
+local playerGui = LocalPlayer:WaitForChild("PlayerGui")
+local CatNet = ReplicatedStorage:WaitForChild("CatNet", 9e9):WaitForChild("Cat", 9e9)
+local Remotes = ReplicatedStorage:WaitForChild("Remotes", 9e9)
+
+local blur = Instance.new("BlurEffect")
+blur.Name = "LoadingBlur"
+blur.Size = 0
+blur.Parent = Lighting
+
+TweenService:Create(blur, TweenInfo.new(0.7), {Size = 12}):Play()
+
+local loaderGui = Instance.new("ScreenGui")
+loaderGui.Name = "SLoader"
+loaderGui.ResetOnSpawn = false
+loaderGui.IgnoreGuiInset = true
+loaderGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+local bg = Instance.new("Frame", loaderGui)
+bg.Size = UDim2.new(1, 0, 1, 0)
+bg.BackgroundColor3 = Color3.fromRGB(0, 10, 40)
+bg.BackgroundTransparency = 1
+
+TweenService:Create(bg, TweenInfo.new(0.6), {BackgroundTransparency = 0.35}):Play()
+
+local logo = Instance.new("ImageLabel", bg)
+logo.Image = "rbxassetid://109141925219563"
+logo.Size = UDim2.new(0, 150, 0, 150)
+logo.AnchorPoint = Vector2.new(0.5, 0.5)
+logo.Position = UDim2.new(0.5, 0, 0.5, 0)
+logo.BackgroundTransparency = 1
+logo.ImageTransparency = 1
+logo.ScaleType = Enum.ScaleType.Fit
+
+TweenService:Create(logo, TweenInfo.new(0.8, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+    Size = UDim2.new(0, 200, 0, 200),
+    ImageTransparency = 0,
+}):Play()
+
+wait(2.8)
+local fadeOut = TweenInfo.new(0.55, Enum.EasingStyle.Sine)
+TweenService:Create(logo, fadeOut, {ImageTransparency = 1}):Play()
+TweenService:Create(bg, fadeOut, {BackgroundTransparency = 1}):Play()
+TweenService:Create(blur, fadeOut, {Size = 0}):Play()
+wait(0.6)
+loaderGui:Destroy()
+blur:Destroy()
+
+local SecurityCheck = function()
+    local BadNames = {"SimpleSpy", "Hydroxide", "RemoteSpy", "Spy", "Explorer", "SaveInstance", "Dex", "V.G Hub"}
+    for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
+        for _, name in pairs(BadNames) do
+            if v.Name:find(name) or v:FindFirstChild(name) then
+                pcall(function() v:Destroy() end)
+                game.Players.LocalPlayer:Kick("MADE BY NEXIFY: Remote Spy Detected")
+            end
+        end
+    end
+    local test = Instance.new("RemoteEvent")
+    pcall(function()
+        if ishooked and (ishooked(test.FireServer) or ishooked(game.IsA) or ishooked(game.HttpGet)) then
+            game.Players.LocalPlayer:Kick("MADE BY NEXIFY: Hook Detected")
+        end
+    end)
+    test:Destroy()
+end
+SecurityCheck()
+task.spawn(function()
+    while task.wait(0.3) do SecurityCheck() end
+end)
+
+local function StartLoading()
+    local CoreGui = game:GetService("CoreGui")
+    local TS = game:GetService("TweenService")
+    local ScreenGui = Instance.new("ScreenGui", CoreGui)
+    ScreenGui.DisplayOrder = 999
+    ScreenGui.IgnoreGuiInset = true
+    local Blur = Instance.new("BlurEffect", game:GetService("Lighting"))
+    Blur.Size = 0
+    TS:Create(Blur, TweenInfo.new(1), {Size = 24}):Play()
+    local MainFrame = Instance.new("Frame", ScreenGui)
+    MainFrame.Size = UDim2.new(1, 0, 1, 0)
+    MainFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 12)
+    MainFrame.BackgroundTransparency = 1
+    MainFrame.BorderSizePixel = 0
+    local ImageLabel = Instance.new("ImageLabel", MainFrame)
+    ImageLabel.Size = UDim2.new(0, 0, 0, 0)
+    ImageLabel.Position = UDim2.new(0.5, 0, 0.45, 0)
+    ImageLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+    ImageLabel.BackgroundTransparency = 1
+    ImageLabel.Image = "rbxassetid://109141925219563"
+    ImageLabel.ImageTransparency = 1
+    local LoadText = Instance.new("TextLabel", MainFrame)
+    LoadText.Size = UDim2.new(0, 400, 0, 50)
+    LoadText.Position = UDim2.new(0.5, 0, 0.75, 0)
+    LoadText.AnchorPoint = Vector2.new(0.5, 0.5)
+    LoadText.BackgroundTransparency = 1
+    LoadText.Text = "MADE BY NEXIFY"
+    LoadText.TextColor3 = Color3.fromRGB(0, 170, 255)
+    LoadText.Font = Enum.Font.GothamBold
+    LoadText.TextSize = 28
+    LoadText.TextTransparency = 1
+    TS:Create(MainFrame, TweenInfo.new(0.8), {BackgroundTransparency = 0.2}):Play()
+    local popInfo = TweenInfo.new(1.2, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
+    TS:Create(ImageLabel, popInfo, {Size = UDim2.new(0, 300, 0, 300), ImageTransparency = 0}):Play()
+    TS:Create(LoadText, TweenInfo.new(1), {TextTransparency = 0}):Play()
+    task.spawn(function()
+        while ScreenGui.Parent do
+            ImageLabel.Rotation = math.sin(tick() * 2) * 5
+            LoadText.TextColor3 = Color3.fromHSV(0.55 + (math.sin(tick()) * 0.05), 0.8, 1)
+            local dots = string.rep(".", math.floor(tick() % 4))
+            LoadText.Text = "LOADING SYSTEM" .. dots
+            task.wait()
+        end
+    end)
+    task.wait(4.5)
+    TS:Create(Blur, TweenInfo.new(1), {Size = 0}):Play()
+    TS:Create(ImageLabel, TweenInfo.new(0.8, Enum.EasingStyle.Back, Enum.EasingDirection.In), {Size = UDim2.new(0,0,0,0), ImageTransparency = 1}):Play()
+    TS:Create(LoadText, TweenInfo.new(0.5), {TextTransparency = 1}):Play()
+    local finalFade = TS:Create(MainFrame, TweenInfo.new(1), {BackgroundTransparency = 1})
+    finalFade:Play()
+    finalFade.Completed:Wait()
+    Blur:Destroy()
+    ScreenGui:Destroy()
+end
+StartLoading()
+
+-- ============================================================
+-- OBSIDIAN UI LIBRARY LOAD
+-- ============================================================
+local repo = "https://raw.githubusercontent.com/deividcomsono/Obsidian/main/"
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
+local ThemeManager = loadstring(game:HttpGet(repo .. "addons/ThemeManager.lua"))()
+local SaveManager = loadstring(game:HttpGet(repo .. "addons/SaveManager.lua"))()
+
+local Options = Library.Options
+local Toggles = Library.Toggles
+
+Library.ShowToggleFrameInKeybinds = true
+
+local Window = Library:CreateWindow({
+    Title = "NEXIFY",
+    Footer = "Diesel n Steel v2.0",
+    Icon = 109141925219563,
+    NotifySide = "Right",
+    ShowCustomCursor = true,
+})
+
+-- ============================================================
+-- TABS
+-- ============================================================
+local Tabs = {
+    Main       = Window:AddTab("Main",      "bolt"),
+    SendCash   = Window:AddTab("Send Cash", "dollar-sign"),
+    Exp        = Window:AddTab("Exp",       "star"),
+    Teleport   = Window:AddTab("Teleport",  "map"),
+    Troller    = Window:AddTab("Troller",   "zap"),
+    Jeepney    = Window:AddTab("Jeepney",   "truck"),
+    Shop       = Window:AddTab("Shop",      "shopping-bag"),
+    Music      = Window:AddTab("Music",     "music"),
+    Misc       = Window:AddTab("Misc",      "settings"),
+    Other      = Window:AddTab("Other",     "globe"),
+    UISettings = Window:AddTab("UI Settings", "sliders"),
+}
+
+-- ============================================================
+-- VARIABLES
+-- ============================================================
+local playerEspEnabled = false
+local jeepEspEnabled = false
+local espObjects = {}
+local isSending = false
+local selectedTargetName = ""
+local cashAmountInput = 1000
+local expHookEnabled = false
+local expBoostValue = 1950
+local isCashSpamActive = false
+local cashTask
+local boostAmountValue = "900"
+local autoLeaveEnabled = true
+local deductAmount = 200
+local autoTakeEnabled = false
+local jeepBoostPower = 25
+local flingEnabled = false
+local flingAll = false
+local flingTarget = ""
+local flingOrigPos = nil
+local bV, bAV
+local selectedPart = "4JJ1"
+local selectedJeepForParts = "Milwaukee Motor Sport 11 Seater_#1"
+
+local function getPlayerNames()
+    local names = {}
+    for _, p in ipairs(game.Players:GetPlayers()) do
+        if p ~= LocalPlayer then table.insert(names, p.Name) end
+    end
+    return names
+end
+
+-- ============================================================
+-- ESP FUNCTIONS
+-- ============================================================
+local function CreateESP(target, name, color)
+    if espObjects[target] then return end
+    local billboard = Instance.new("BillboardGui")
+    billboard.Name = "NexifyESP"
+    billboard.AlwaysOnTop = true
+    billboard.Size = UDim2.new(0, 200, 0, 50)
+    billboard.Adornee = target:IsA("Model") and (target.PrimaryPart or target:FindFirstChildWhichIsA("BasePart")) or target
+    billboard.Parent = game:GetService("CoreGui")
+    local label = Instance.new("TextLabel")
+    label.Parent = billboard
+    label.BackgroundTransparency = 1
+    label.Size = UDim2.new(1, 0, 1, 0)
+    label.Text = name
+    label.TextColor3 = color
+    label.TextStrokeTransparency = 0
+    label.Font = Enum.Font.GothamBold
+    label.TextSize = 14
+    espObjects[target] = billboard
+    task.spawn(function()
+        while billboard and billboard.Parent do
+            local char = LocalPlayer.Character
+            if char and char:FindFirstChild("HumanoidRootPart") and billboard.Adornee then
+                local dist = math.floor((char.HumanoidRootPart.Position - billboard.Adornee.Position).Magnitude)
+                label.Text = name .. " [" .. dist .. "m]"
+            end
+            task.wait(0.1)
+        end
+    end)
+end
+
+local function RemoveESP(target)
+    if espObjects[target] then
+        espObjects[target]:Destroy()
+        espObjects[target] = nil
+    end
+end
+
+local function UpdateESP()
+    for obj, _ in pairs(espObjects) do RemoveESP(obj) end
+    if playerEspEnabled then
+        for _, p in ipairs(game.Players:GetPlayers()) do
+            if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
+                CreateESP(p.Character.HumanoidRootPart, p.Name, Color3.fromRGB(255, 255, 255))
+            end
+        end
+    end
+    if jeepEspEnabled then
+        local jeepFolder = workspace:FindFirstChild("Jeepnies")
+        if jeepFolder then
+            for _, j in ipairs(jeepFolder:GetChildren()) do
+                if j:IsA("Model") then
+                    CreateESP(j, "Jeepney", Color3.fromRGB(0, 255, 150))
+                end
+            end
+        end
+    end
+end
+
+game.Players.PlayerAdded:Connect(function(p)
+    if playerEspEnabled then UpdateESP() end
+    if autoLeaveEnabled then
+        if p:GetRankInGroup(0) >= 200 or p.Name:lower():find("admin") or p.Name:lower():find("mod") then
+            LocalPlayer:Kick("MADE BY NEXIFY: Admin/Staff Joined (" .. p.Name .. ")")
+        end
+    end
+end)
+
+game.Players.PlayerRemoving:Connect(function(p)
+    if p.Character then RemoveESP(p.Character.HumanoidRootPart) end
+end)
+
+-- ============================================================
+-- TELEPORT HELPER
+-- ============================================================
+local function tpJeepOrPlayer(target)
+    local char = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    local hum = char:FindFirstChildOfClass("Humanoid")
+    if not hrp or not target then return end
+    local targetPos = (target:IsA("BasePart") and target.Position) or target.Position
+    local newPos = targetPos + Vector3.new(0, 5, 0)
+    if hum and hum.Sit and hum.SeatPart and hum.SeatPart:IsA("VehicleSeat") then
+        local jeep = hum.SeatPart:FindFirstAncestorOfClass("Model")
+        if jeep and jeep.PrimaryPart then
+            for _, v in ipairs(jeep:GetDescendants()) do
+                if v:IsA("BasePart") then v.Anchored = true end
+            end
+            jeep:SetPrimaryPartCFrame(CFrame.new(newPos))
+            task.wait(0.15)
+            for _, v in ipairs(jeep:GetDescendants()) do
+                if v:IsA("BasePart") then v.Anchored = false end
+            end
+            return
+        end
+    end
+    hrp.CFrame = CFrame.new(newPos)
+end
+
+-- ============================================================
+-- AUTO TAKE (CLICK HELPERS)
+-- ============================================================
+local function clickButton(obj)
+    if getconnections then
+        for _, conn in pairs(getconnections(obj.MouseButton1Click)) do conn:Fire() end
+        for _, conn in pairs(getconnections(obj.Activated)) do conn:Fire() end
+    end
+end
+
+local function clickAllTake()
+    for _, obj in pairs(playerGui:GetDescendants()) do
+        if (obj:IsA("TextButton") or obj:IsA("ImageButton")) and obj.Name == "Take" and obj.Visible and obj.Active and obj.Parent then
+            clickButton(obj)
+        end
+    end
+end
+
+local function clickFiftyButton()
+    for _, obj in pairs(playerGui:GetDescendants()) do
+        if (obj:IsA("TextButton") or obj:IsA("ImageButton")) and obj.Name == "50" and obj.Visible and obj.Active and obj.Parent then
+            clickButton(obj)
+        end
+    end
+end
+
+local function clickAllGive()
+    for _, obj in pairs(playerGui:GetDescendants()) do
+        if (obj:IsA("TextButton") or obj:IsA("ImageButton")) and obj.Name == "Give" and obj.Visible and obj.Active and obj.Parent then
+            clickButton(obj)
+        end
+    end
+end
+
+task.spawn(function()
+    while true do
+        if autoTakeEnabled then
+            clickAllTake()
+            task.wait(0.1)
+            for i = 1, 5 do clickFiftyButton() task.wait(0.01) end
+            task.wait(0.1)
+            clickAllGive()
+        end
+        task.wait(0.5)
+    end
+end)
+
+UserInputService.InputBegan:Connect(function(input, gpe)
+    if not gpe and input.KeyCode == Enum.KeyCode.E then
+        autoTakeEnabled = not autoTakeEnabled
+        if Toggles.AutoTake then Toggles.AutoTake:SetValue(autoTakeEnabled) end
+    end
+end)
+
+-- ============================================================
+-- EXP HOOK (NAMECALL)
+-- ============================================================
+local mt = getrawmetatable(game)
+local oldNamecall = mt.__namecall
+setreadonly(mt, false)
+mt.__namecall = function(self, ...)
+    local args, method = {...}, getnamecallmethod()
+    if (method == "FireServer" or method == "InvokeServer") and self.Name == "UnloadPassenger" then
+        if expHookEnabled then
+            for i = 1, expBoostValue do
+                oldNamecall(self, unpack(args))
+            end
+            return oldNamecall(self, unpack(args))
+        end
+    end
+    return oldNamecall(self, ...)
+end
+
+-- ============================================================
+-- MUSIC CONTROLLER
+-- ============================================================
+local MusicController = {
+    currentSound = nil,
+    volume = 10,
+    loop = false,
+    isPaused = false,
+}
+
+function MusicController:Play(assetId)
+    if self.currentSound then
+        pcall(function() self.currentSound:Stop() self.currentSound:Destroy() end)
+    end
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://" .. assetId
+    sound.Volume = self.volume
+    sound.Looped = self.loop
+    sound.Parent = game:GetService("SoundService")
+    sound:Play()
+    self.currentSound = sound
+    self.isPaused = false
+end
+
+function MusicController:Stop()
+    if self.currentSound then
+        pcall(function() self.currentSound:Stop() self.currentSound:Destroy() end)
+        self.currentSound = nil
+        self.isPaused = false
+    end
+end
+
+function MusicController:Pause()
+    if self.currentSound and not self.isPaused then
+        pcall(function() self.currentSound:Pause() self.isPaused = true end)
+    end
+end
+
+function MusicController:Resume()
+    if self.currentSound and self.isPaused then
+        pcall(function() self.currentSound:Play() self.isPaused = false end)
+    end
+end
+
+function MusicController:SetVolume(newVolume)
+    self.volume = newVolume
+    if self.currentSound then pcall(function() self.currentSound.Volume = newVolume end) end
+end
+
+function MusicController:SetLoop(shouldLoop)
+    self.loop = shouldLoop
+    if self.currentSound then pcall(function() self.currentSound.Looped = shouldLoop end) end
+end
+
+-- ============================================================
+-- FLING SYSTEM
+-- ============================================================
+local function GetFlingTarget()
+    if flingAll then
+        local plys = {}
+        for _, p in ipairs(game.Players:GetPlayers()) do
+            if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then
+                table.insert(plys, p)
+            end
+        end
+        if #plys > 0 then return plys[math.random(1, #plys)] end
+    else
+        for _, p in ipairs(game.Players:GetPlayers()) do
+            if p.Name == flingTarget then return p end
+        end
+    end
+    return nil
+end
+
+task.spawn(function()
+    while true do
+        if flingEnabled or flingAll then
+            local target = GetFlingTarget()
+            local hrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+            if target and target.Character and target.Character:FindFirstChild("HumanoidRootPart") and hrp then
+                if not bV or not bV.Parent then
+                    bV = Instance.new("BodyVelocity", hrp)
+                    bV.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+                    bV.Velocity = Vector3.new(900000, 900000, 900000)
+                end
+                if not bAV or not bAV.Parent then
+                    bAV = Instance.new("BodyAngularVelocity", hrp)
+                    bAV.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+                    bAV.AngularVelocity = Vector3.new(0, 999999, 0)
+                end
+                hrp.CFrame = target.Character.HumanoidRootPart.CFrame
+            else
+                if not flingAll and bV then bV:Destroy() bV = nil end
+                if not flingAll and bAV then bAV:Destroy() bAV = nil end
+            end
+        else
+            if bV then bV:Destroy() bV = nil end
+            if bAV then bAV:Destroy() bAV = nil end
+        end
+        task.wait()
+    end
+end)
+
+-- ============================================================
+-- =================== MAIN TAB ==============================
+-- ============================================================
+local MainLeft  = Tabs.Main:AddLeftGroupbox("Auto", "cpu")
+local MainRight = Tabs.Main:AddRightGroupbox("Manual Settings", "sliders")
+
+MainLeft:AddToggle("ManualCash", {
+    Text = "Manual Cash",
+    Tooltip = "Fires RecieveCash remote repeatedly",
+    Default = false,
+    Callback = function(state)
+        isCashSpamActive = state
+        if isCashSpamActive then
+            cashTask = task.spawn(function()
+                while isCashSpamActive do
+                    local loopCount = tonumber(boostAmountValue) or 900
+                    for _ = 1, loopCount do
+                        local args = {
+                            [1] = {
+                                [1] = {
+                                    [1] = "3",
+                                    [2] = "RecieveCash",
+                                    [3] = {["Value"] = 100, ["Main"] = true, ["Password"] = 379561105}
+                                }
+                            }
+                        }
+                        pcall(function() CatNet:FireServer(unpack(args)) end)
+                    end
+                    task.wait(0.5)
+                end
+            end)
+        else
+            if cashTask then task.cancel(cashTask) cashTask = nil end
+        end
+    end
+})
+
+MainLeft:AddToggle("AutoTake", {
+    Text = "Auto Take",
+    Tooltip = "Auto takes cash from passengers (also toggle with E key)",
+    Default = false,
+    Callback = function(state) autoTakeEnabled = state end
+})
+
+MainRight:AddDropdown("BoostAmt", {
+    Values = {"900", "1000", "1300", "2000"},
+    Default = "900",
+    Text = "Boost Amount",
+    Tooltip = "How many remote fires per cycle for Manual Cash",
+    Callback = function(v) boostAmountValue = v end
+})
+
+-- ============================================================
+-- =================== AUTO CASH (MAIN TAB) ==================
+-- ============================================================
+local autoCashEnabled   = false
+local autoCashTask      = nil
+
+local AUTO_CASH_JEEPNEY_NAME = "Sarao Custombuilt Model 2"
+local AUTO_CASH_PASSWORD     = 600777995
+local AUTO_CASH_GARAGE_ADDR  = "67 Matungao st., Matungao, Bulakan, Bulacan"
+local AUTO_CASH_ROUTE        = "Malolos - Bulakan"
+local AUTO_CASH_LOOP_DELAY   = 1
+
+local CatRemote_AC   = ReplicatedStorage:WaitForChild("CatNet", 9e9):WaitForChild("Cat", 9e9)
+local SpawnRemote_AC = ReplicatedStorage:WaitForChild("Remotes", 9e9):WaitForChild("SpawnJeepney", 9e9)
+
+local function fireAC(remote, data)
+    pcall(function() remote:FireServer(data) end)
+end
+
+local function runAutoCashCycle()
+    -- 1. BUY
+    fireAC(CatRemote_AC, {
+        [1] = "3",
+        [2] = "BuyJeepney",
+        [3] = { JeepneyName = AUTO_CASH_JEEPNEY_NAME, Password = AUTO_CASH_PASSWORD }
+    })
+    task.wait(0.5)
+
+    -- 2. SPAWN
+    local ok, garage = pcall(function()
+        return workspace:WaitForChild("Map", 10)
+            :WaitForChild("Misc", 10)
+            :WaitForChild("Garages", 10)
+            :WaitForChild(AUTO_CASH_GARAGE_ADDR, 10)
+    end)
+    if ok and garage then
+        fireAC(SpawnRemote_AC, {
+            Garage      = garage,
+            Password    = AUTO_CASH_PASSWORD,
+            JeepneyName = AUTO_CASH_JEEPNEY_NAME .. "_#3",
+            Route       = AUTO_CASH_ROUTE
+        })
+    end
+    task.wait(0.5)
+
+    -- 3. SELL
+    fireAC(CatRemote_AC, {
+        [1] = "3",
+        [2] = "SellJeepney",
+        [3] = { Password = AUTO_CASH_PASSWORD, Index = AUTO_CASH_JEEPNEY_NAME .. "_#3" }
+    })
+    task.wait(AUTO_CASH_LOOP_DELAY)
+end
+
+local MainAutoCash = Tabs.Main:AddLeftGroupbox("Auto Cash", "dollar-sign")
+
+MainAutoCash:AddInput("AutoCashJeepName", {
+    Default     = AUTO_CASH_JEEPNEY_NAME,
+    Text        = "Jeepney Name",
+    Tooltip     = "Exact name of the jeepney to buy/sell",
+    Placeholder = "Sarao Custombuilt Model 2",
+    Callback    = function(v)
+        if v and v ~= "" then AUTO_CASH_JEEPNEY_NAME = v end
+    end
+})
+
+MainAutoCash:AddInput("AutoCashPassword", {
+    Default     = tostring(AUTO_CASH_PASSWORD),
+    Numeric     = true,
+    Text        = "Password",
+    Tooltip     = "Password used for buy, spawn, and sell",
+    Placeholder = "600777995",
+    Callback    = function(v)
+        local n = tonumber(v)
+        if n then AUTO_CASH_PASSWORD = n end
+    end
+})
+
+MainAutoCash:AddInput("AutoCashGarage", {
+    Default     = AUTO_CASH_GARAGE_ADDR,
+    Text        = "Garage Address",
+    Tooltip     = "Exact workspace Garages folder child name",
+    Placeholder = "67 Matungao st., Matungao, Bulakan, Bulacan",
+    Callback    = function(v)
+        if v and v ~= "" then AUTO_CASH_GARAGE_ADDR = v end
+    end
+})
+
+MainAutoCash:AddInput("AutoCashRoute", {
+    Default     = AUTO_CASH_ROUTE,
+    Text        = "Route",
+    Tooltip     = "Route assigned on spawn (e.g. Malolos - Bulakan)",
+    Placeholder = "Malolos - Bulakan",
+    Callback    = function(v)
+        if v and v ~= "" then AUTO_CASH_ROUTE = v end
+    end
+})
+
+MainAutoCash:AddToggle("AutoCashEnabled", {
+    Text    = "Auto Cash (Buy > Spawn > Sell)",
+    Tooltip = "Loops: buy the jeepney, spawn it, then sell it for cash",
+    Default = false,
+    Callback = function(state)
+        autoCashEnabled = state
+        if autoCashEnabled then
+            autoCashTask = task.spawn(function()
+                while autoCashEnabled do
+                    local ok2, err = pcall(runAutoCashCycle)
+                    if not ok2 then
+                        warn("[AutoCash] Cycle error:", err)
+                        task.wait(1)
+                    end
+                end
+            end)
+            Library:Notify({ Title = "Auto Cash", Description = "Started!", Time = 3 })
+        else
+            if autoCashTask then
+                task.cancel(autoCashTask)
+                autoCashTask = nil
+            end
+            Library:Notify({ Title = "Auto Cash", Description = "Stopped.", Time = 3 })
+        end
+    end
+})
+
+-- ============================================================
+-- =================== SEND CASH TAB =========================
+-- ============================================================
+local SendLeft  = Tabs.SendCash:AddLeftGroupbox("Send Cash to Player", "send")
+local SendRight = Tabs.SendCash:AddRightGroupbox("Settings", "settings")
+
+SendLeft:AddDropdown("SendTarget", {
+    Values = getPlayerNames(),
+    Default = 1,
+    Text = "Select Player",
+    Tooltip = "Choose target player to send cash",
+    Searchable = true,
+    Callback = function(v) selectedTargetName = v end
+})
+
+SendLeft:AddButton({
+    Text = "Refresh Players",
+    Func = function()
+        Library:Notify({Title = "NEXIFY", Description = "Re-open dropdown to see updated players", Time = 3})
+    end,
+    Tooltip = "Refresh player list",
+})
+
+SendRight:AddInput("CashAmount", {
+    Default = "1000",
+    Numeric = true,
+    Finished = false,
+    Text = "Cash Amount",
+    Tooltip = "Enter amount to send (max 50k per tick)",
+    Placeholder = "1000",
+    Callback = function(value)
+        local num = tonumber(value)
+        if num and num > 0 then cashAmountInput = num end
+    end
+})
+
+SendRight:AddToggle("SendCash", {
+    Text = "Send Cash (limit 50k)",
+    Tooltip = "Continuously send cash to selected player",
+    Default = false,
+    Callback = function(Value)
+        isSending = Value
+        if isSending then
+            task.spawn(function()
+                repeat
+                    local targetPlayer = Players:FindFirstChild(selectedTargetName)
+                    if targetPlayer then
+                        pcall(function()
+                            local args = {
+                                [1] = {
+                                    [1] = {
+                                        [1] = "3",
+                                        [2] = "SendCash",
+                                        [3] = {
+                                            ["Value"] = cashAmountInput,
+                                            ["OtherPlayer"] = targetPlayer,
+                                            ["Password"] = 828782929
+                                        }
+                                    }
+                                }
+                            }
+                            CatNet:FireServer(unpack(args))
+                        end)
+                    end
+                    task.wait(0.001)
+                until not isSending
+            end)
+        end
+    end
+})
+
+-- ============================================================
+-- =================== EXP TAB ===============================
+-- ============================================================
+local ExpLeft  = Tabs.Exp:AddLeftGroupbox("Exp Farm", "star")
+local ExpRight = Tabs.Exp:AddRightGroupbox("Deduct Management", "minus-circle")
+local ExpTerminals = Tabs.Exp:AddLeftGroupbox("Terminals & Drops", "map-pin")
+
+ExpLeft:AddDropdown("ExpBoost", {
+    Values = {"500", "800", "1000", "1500", "1700", "1950", "2000", "2500", "3000", "4000", "4500", "5000"},
+    Default = "1950",
+    Text = "EXP Boost Amount",
+    Tooltip = "How many times to fire UnloadPassenger per trip",
+    Callback = function(v) expBoostValue = tonumber(v) end
+})
+
+ExpLeft:AddToggle("ExpFarm", {
+    Text = "Enable Exp Farm",
+    Tooltip = "Hooks UnloadPassenger to multiply EXP gain",
+    Default = false,
+    Callback = function(v) expHookEnabled = v end
+})
+
+ExpRight:AddInput("DeductAmt", {
+    Default = "200",
+    Numeric = true,
+    Finished = false,
+    Text = "Deduct Amount",
+    Tooltip = "Set amount to deduct",
+    Placeholder = "200",
+    Callback = function(value)
+        local num = tonumber(value)
+        if num and num >= 0 then deductAmount = num end
+    end
+})
+
+ExpRight:AddButton({
+    Text = "Deduct Cash",
+    Tooltip = "Fires DeductCash remote on nearest jeepney",
+    Func = function()
+        pcall(function()
+            local targetPV
+            local jeepFolder = workspace:FindFirstChild("Jeepnies")
+            if jeepFolder then
+                for _, jeep in ipairs(jeepFolder:GetChildren()) do
+                    targetPV = jeep:FindFirstChild("PassengerValues")
+                    if targetPV then break end
+                end
+            end
+            if targetPV then
+                CatNet:FireServer({
+                    {{{"3", "DeductCash", {["PassengerValues"] = targetPV, ["Password"] = 762609549, ["Value"] = deductAmount}}}}
+                })
+            end
+        end)
+    end
+})
+
+ExpRight:AddButton({
+    Text = "Deduct Exp",
+    Tooltip = "Fires DeductExp remote on nearest jeepney",
+    Func = function()
+        pcall(function()
+            local targetPV
+            local jeepFolder = workspace:FindFirstChild("Jeepnies")
+            if jeepFolder then
+                for _, jeep in ipairs(jeepFolder:GetChildren()) do
+                    targetPV = jeep:FindFirstChild("PassengerValues")
+                    if targetPV then break end
+                end
+            end
+            if targetPV then
+                CatNet:FireServer({
+                    {{{"3", "DeductExp", {["PassengerValues"] = targetPV, ["Password"] = 762609549, ["Value"] = deductAmount}}}}
+                })
+            end
+        end)
+    end
+})
+
+local teleportPoints = {
+    ["Malolos Load"]   = {"Map","Misc","TerminalParts","Malolos - Bulakan","ToMalolosTerminalLoadPoint"},
+    ["Bulakan Load"]   = {"Map","Misc","TerminalParts","Malolos - Bulakan","ToBulakanTerminalLoadPoint"},
+    ["Guiguinto Load"] = {"Map","Misc","TerminalParts","Guiguinto - Bulakan","ToGuiguintoTerminalLoadPoint"},
+    ["Balagtas Load"]  = {"Map","Misc","TerminalParts","Balagtas - Bulakan","ToBalagtasTerminalLoadPoint"},
+    ["Malolos Drop"]   = {"Map","Misc","PassengerSpawnPoints","Malolos - Bulakan","MalolosTerminalDropPoint"},
+    ["Bulakan Drop"]   = {"Map","Misc","PassengerSpawnPoints","Malolos - Bulakan","BulakanTerminalDropPoint"},
+    ["Guiguinto Drop"] = {"Map","Misc","PassengerSpawnPoints","Guiguinto - Bulakan","GuiguintoTerminalDropPoint"},
+    ["Balagtas Drop"]  = {"Map","Misc","PassengerSpawnPoints","Balagtas - Bulakan","BalagtasTerminalDropPoint"},
+}
+
+for name, path in pairs(teleportPoints) do
+    ExpTerminals:AddButton({
+        Text = name,
+        Tooltip = "Teleport to " .. name,
+        Func = function()
+            local cur = workspace
+            for _, p in ipairs(path) do cur = cur:FindFirstChild(p) if not cur then return end end
+            local targetCFrame = cur.CFrame + Vector3.new(0, 5, 0)
+            local char = LocalPlayer.Character
+            local hum = char and char:FindFirstChild("Humanoid")
+            if hum and hum.SeatPart then
+                local veh = hum.SeatPart.Parent
+                if veh.PrimaryPart then veh:SetPrimaryPartCFrame(targetCFrame) end
+            else
+                char:WaitForChild("HumanoidRootPart").CFrame = targetCFrame
+            end
+        end
+    })
+end
+
+-- ============================================================
+-- =================== TELEPORT TAB ==========================
+-- ============================================================
+local TpMalolos  = Tabs.Teleport:AddLeftGroupbox("Malolos - Bulakan", "map-pin")
+local TpGuiguinto = Tabs.Teleport:AddRightGroupbox("Guiguinto - Bulakan", "map-pin")
+local TpBalagtas = Tabs.Teleport:AddLeftGroupbox("Balagtas - Bulakan", "map-pin")
+
+TpMalolos:AddButton({Text = "To Malolos Terminal", Tooltip = "Load point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.TerminalParts["Malolos - Bulakan"].ToMalolosTerminalLoadPoint) end})
+TpMalolos:AddButton({Text = "To Bulakan Terminal", Tooltip = "Load point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.TerminalParts["Malolos - Bulakan"].ToBulakanTerminalLoadPoint) end})
+TpMalolos:AddButton({Text = "Malolos Drop Point", Tooltip = "Drop point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.PassengerSpawnPoints["Malolos - Bulakan"].MalolosTerminalDropPoint) end})
+TpMalolos:AddButton({Text = "Bulakan Drop Point", Tooltip = "Drop point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.PassengerSpawnPoints["Malolos - Bulakan"].BulakanTerminalDropPoint) end})
+
+TpGuiguinto:AddButton({Text = "To Guiguinto Terminal", Tooltip = "Load point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.TerminalParts["Guiguinto - Bulakan"].ToGuiguintoTerminalLoadPoint) end})
+TpGuiguinto:AddButton({Text = "To Bulakan Terminal", Tooltip = "Load point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.TerminalParts["Guiguinto - Bulakan"].ToBulakanTerminalLoadPoint) end})
+TpGuiguinto:AddButton({Text = "Guiguinto Drop Point", Tooltip = "Drop point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.PassengerSpawnPoints["Guiguinto - Bulakan"].GuiguintoTerminalDropPoint) end})
+TpGuiguinto:AddButton({Text = "Bulakan Drop Point", Tooltip = "Drop point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.PassengerSpawnPoints["Guiguinto - Bulakan"].BulakanTerminalDropPoint) end})
+
+TpBalagtas:AddButton({Text = "To Balagtas Terminal", Tooltip = "Load point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.TerminalParts["Balagtas - Bulakan"].ToBalagtasTerminalLoadPoint) end})
+TpBalagtas:AddButton({Text = "To Bulakan Terminal", Tooltip = "Load point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.TerminalParts["Balagtas - Bulakan"].ToBulakanTerminalLoadPoint) end})
+TpBalagtas:AddButton({Text = "Balagtas Drop Point", Tooltip = "Drop point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.PassengerSpawnPoints["Balagtas - Bulakan"].BalagtasTerminalDropPoint) end})
+TpBalagtas:AddButton({Text = "Bulakan Drop Point", Tooltip = "Drop point", Func = function()
+    tpJeepOrPlayer(workspace.Map.Misc.PassengerSpawnPoints["Balagtas - Bulakan"].BulakanTerminalDropPoint) end})
+
+-- ============================================================
+-- =================== TROLLER TAB ===========================
+-- ============================================================
+local TrollerLeft  = Tabs.Troller:AddLeftGroupbox("Fling Controls", "zap")
+local TrollerRight = Tabs.Troller:AddRightGroupbox("Target", "crosshair")
+
+TrollerRight:AddDropdown("FlingTarget", {
+    Values = getPlayerNames(),
+    Default = 1,
+    Text = "Select Target",
+    Tooltip = "Choose a player to fling",
+    Searchable = true,
+    Callback = function(v) flingTarget = v end
+})
+
+TrollerRight:AddButton({
+    Text = "Refresh Players",
+    Tooltip = "Refresh the player dropdown list",
+    Func = function()
+        Library:Notify({Title = "NEXIFY", Description = "Re-open dropdown to see updated players", Time = 3})
+    end
+})
+
+TrollerLeft:AddToggle("FlingEnabled", {
+    Text = "Enable Flinger",
+    Tooltip = "Fling the selected target player",
+    Default = false,
+    Callback = function(v)
+        flingEnabled = v
+        local hrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if v then
+            if hrp then flingOrigPos = hrp.CFrame end
+        else
+            if hrp then
+                hrp.RotVelocity = Vector3.new(0,0,0)
+                hrp.Velocity = Vector3.new(0,0,0)
+                if flingOrigPos then hrp.CFrame = flingOrigPos flingOrigPos = nil end
+            end
+        end
+    end
+})
+
+TrollerLeft:AddToggle("FlingAll", {
+    Text = "Fling All",
+    Tooltip = "Randomly fling all players in the server",
+    Default = false,
+    Callback = function(v)
+        flingAll = v
+        local hrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if v then
+            if hrp then flingOrigPos = hrp.CFrame end
+        else
+            if hrp then
+                hrp.RotVelocity = Vector3.new(0,0,0)
+                hrp.Velocity = Vector3.new(0,0,0)
+                if flingOrigPos then hrp.CFrame = flingOrigPos flingOrigPos = nil end
+            end
+        end
+    end
+})
+
+-- ============================================================
+-- =================== JEEPNEY TAB ===========================
+-- ============================================================
+local JeepLeft  = Tabs.Jeepney:AddLeftGroupbox("Jeep Features", "truck")
+local JeepRight = Tabs.Jeepney:AddRightGroupbox("Unlock All Parts", "unlock")
+
+JeepLeft:AddSlider("JeepBoost", {
+    Text = "Boost Intensity",
+    Tooltip = "Set jeep speed boost power",
+    Default = 25,
+    Min = 5,
+    Max = 200,
+    Rounding = 0,
+    Callback = function(v) jeepBoostPower = v end
+})
+
+JeepLeft:AddButton({
+    Text = "Apply Jeep Boost",
+    Tooltip = "Instantly boost your jeepney forward",
+    Func = function()
+        local char = LocalPlayer.Character
+        local hum = char and char:FindFirstChild("Humanoid")
+        if hum and hum.SeatPart then
+            local weight = hum.SeatPart.Parent:FindFirstChild("Body"):FindFirstChild("#Weight")
+            if weight then
+                hum.SeatPart.Parent.PrimaryPart = weight
+                weight.Velocity = weight.Velocity + (weight.CFrame.LookVector * jeepBoostPower)
+            end
+        end
+    end
+})
+
+JeepLeft:AddButton({
+    Text = "Spawn NPC Jeepney",
+    Tooltip = "Spawns an NPC-operated jeepney",
+    Func = function()
+        ReplicatedStorage.Remotes.SpawnOperatorNPCJeepney:FireServer({
+            UnitName = "Unit 7 (222)",
+            JeepneyName = "Sarao Custombuilt Model 2",
+            OperatorNpc = workspace.Map.Misc.Operators["Mang Juan"],
+        })
+    end
+})
+
+JeepLeft:AddToggle("AutoKM", {
+    Text = "Auto Farm KM",
+    Tooltip = "Automatically drives the jeep to farm kilometers",
+    Default = false,
+    Callback = function(state)
+        task.spawn(function()
+            while state do
+                local char = LocalPlayer.Character
+                local hum = char and char:FindFirstChild("Humanoid")
+                if hum and hum.SeatPart then
+                    local car = hum.SeatPart.Parent
+                    local body = car:FindFirstChild("Body")
+                    local weight = body and body:FindFirstChild("#Weight")
+                    if weight then
+                        car.PrimaryPart = weight
+                        weight.Velocity = weight.CFrame.LookVector * 550
+                        weight.RotVelocity = Vector3.new(0, 0, 0)
+                    end
+                end
+                task.wait(0.1)
+            end
+        end)
+    end
+})
+
+JeepRight:AddDropdown("JeepParts", {
+    Values = {"Milwaukee Motor Sport 11 Seater", "Morales 10 Seater", "DF Devera Long Model", "Sarao Custombuilt Model 2", "Xlt Auv 12 Seater"},
+    Default = "Milwaukee Motor Sport 11 Seater",
+    Text = "Select Jeep for Parts",
+    Tooltip = "Choose which jeepney to unlock parts for",
+    Callback = function(v)
+        if v == "Sarao Custombuilt Model 2" then selectedJeepForParts = "Sarao Custombuilt Model 2_#1"
+        elseif v == "DF Devera Long Model" then selectedJeepForParts = "DF Devera Long Model_#1"
+        elseif v == "Morales 10 Seater" then selectedJeepForParts = "Morales 10 Seater_#1"
+        elseif v == "Xlt Auv 12 Seater" then selectedJeepForParts = "Xlt Auv 12 Seater_#1"
+        elseif v == "Milwaukee Motor Sport 11 Seater" then selectedJeepForParts = "Milwaukee Motor Sport 11 Seater_#1"
+        end
+    end
+})
+
+JeepRight:AddDropdown("SelectPart", {
+    Values = {
+        "BA - 05", "BA - 01", "BA - 03", "T - 02 (R)", "6-Speed Manual", "5-Speed Manual",
+        "C - 04", "TO - 01", "4HK1 Twin Turbo", "4JJ1", "BF - 02", "4BC2",
+        "4HE1 Single Turbo", "4-Speed Manual (High Ratio)", "R - 02", "EO - 01",
+        "T - 05 (R)", "T - 03 (R)", "TO - 02", "T - 04 (F)", "EO - 03", "B - 04",
+        "T - 05 (F)", "CL - 02", "4JK1", "BA - 02", "EO - 04", "T - 04 (R)",
+        "C - 02", "BA - 04", "T - 02 (F)", "EO - 02", "B - 05", "TO - 05",
+        "CL - 01", "C - 03", "B - 03", "BF - 01", "4HF1 Twin Turbo", "T - 01 (F)",
+        "TO - 03", "TO - 04", "B - 02", "R - 01", "T - 01 (R)", "4-Speed Manual",
+        "EO - 05", "4BE1", "T - 03 (F)", "B - 01", "4HK1 Single Turbo", "D - 01", "C - 01"
+    },
+    Default = "4JJ1",
+    Text = "Select Part",
+    Tooltip = "Choose part to unlock individually",
+    Searchable = true,
+    Callback = function(v) selectedPart = v end
+})
+
+JeepRight:AddButton({
+    Text = "Buy Single Part",
+    Tooltip = "Unlock the selected part at 100%",
+    Func = function()
+        local args = {[1] = {[1] = {[1] = "3", [2] = "CloseCustomize", [3] = {["Password"] = 341958586, ["NewOwnedParts"] = {[selectedPart] = 100}, ["JeepneyName"] = selectedJeepForParts}}}}
+        CatNet:FireServer(unpack(args))
+    end
+})
+
+JeepRight:AddButton({
+    Text = "Unlock All Parts (100%)",
+    Tooltip = "Instantly unlock every part for the selected jeepney",
+    Func = function()
+        local args = {
+            [1] = {[1] = {[1] = "3", [2] = "CloseCustomize", [3] = {
+                ["Password"] = 341958586,
+                ["NewOwnedParts"] = {
+                    ["BA - 05"]=100,["BA - 01"]=100,["BA - 03"]=100,["T - 02 (R)"]=100,
+                    ["6-Speed Manual"]=100,["5-Speed Manual"]=100,["C - 04"]=100,["TO - 01"]=100,
+                    ["4HK1 Twin Turbo"]=100,["4JJ1"]=100,["BF - 02"]=100,["4BC2"]=100,
+                    ["4HE1 Single Turbo"]=100,["4-Speed Manual (High Ratio)"]=100,["R - 02"]=100,["EO - 01"]=100,
+                    ["T - 05 (R)"]=100,["T - 03 (R)"]=100,["TO - 02"]=100,["T - 04 (F)"]=100,
+                    ["EO - 03"]=100,["B - 04"]=100,["T - 05 (F)"]=100,["CL - 02"]=100,
+                    ["4JK1"]=100,["BA - 02"]=100,["EO - 04"]=100,["T - 04 (R)"]=100,
+                    ["C - 02"]=100,["BA - 04"]=100,["T - 02 (F)"]=100,["EO - 02"]=100,
+                    ["B - 05"]=100,["TO - 05"]=100,["CL - 01"]=100,["C - 03"]=100,
+                    ["B - 03"]=100,["BF - 01"]=100,["4HF1 Twin Turbo"]=100,["T - 01 (F)"]=100,
+                    ["TO - 03"]=100,["TO - 04"]=100,["B - 02"]=100,["R - 01"]=100,
+                    ["T - 01 (R)"]=100,["4-Speed Manual"]=100,["EO - 05"]=100,["4BE1"]=100,
+                    ["T - 03 (F)"]=100,["B - 01"]=100,["4HK1 Single Turbo"]=100,["D - 01"]=100,["C - 01"]=100,
+                },
+                ["JeepneyName"] = selectedJeepForParts
+            }}}
+        }
+        CatNet:FireServer(unpack(args))
+    end
+})
+
+-- ============================================================
+-- =================== SHOP TAB ==============================
+-- ============================================================
+local ShopLeft  = Tabs.Shop:AddLeftGroupbox("Buy Jeepney", "shopping-bag")
+local ShopFoodRight = Tabs.Shop:AddRightGroupbox("Buy Food", "coffee")
+local ShopToolsLeft = Tabs.Shop:AddLeftGroupbox("Buy Tools", "tool")
+
+local jeepNames = {
+    "Milwaukee Motor Sport 11 Seater", "Morales 10 Seater",
+    "DF Devera Long Model", "Sarao Custombuilt Model 2", "Xlt Auv 12 Seater"
+}
+local selectedShopJeep = jeepNames[1]
+
+ShopLeft:AddDropdown("ShopJeep", {
+    Values = jeepNames,
+    Default = jeepNames[1],
+    Text = "Select Jeepney",
+    Tooltip = "Choose which jeepney to buy",
+    Callback = function(v) selectedShopJeep = v end
+})
+
+ShopLeft:AddButton({
+    Text = "Buy Jeepney",
+    Tooltip = "Purchase the selected jeepney",
+    Func = function()
+        local args = {[1] = {[1] = {[1] = "3", [2] = "BuyJeepney", [3] = {["JeepneyName"] = selectedShopJeep, ["Password"] = 873479336}}}}
+        pcall(function() CatNet:FireServer(unpack(args)) end)
+    end
+})
+
+local foods = {"Hotdog", "Isaw", "Bloxy Cola", "Chips 1", "Chips 3", "Chocolate Bar 1", "Bread", "Fishball"}
+for _, food in ipairs(foods) do
+    ShopFoodRight:AddButton({
+        Text = food,
+        Tooltip = "Buy " .. food,
+        Func = function()
+            pcall(function() ReplicatedStorage.Remotes.BuyFood:InvokeServer({Password = 333386978, FoodName = food}) end)
+        end
+    })
+end
+
+local tools = {"Diesel can", "Rope", "Wrench", "Metal pipe", "Baseball bat", "Hammer", "Coolant Can", "Engine Oil Can"}
+for _, tool in ipairs(tools) do
+    ShopToolsLeft:AddButton({
+        Text = tool,
+        Tooltip = "Buy " .. tool,
+        Func = function()
+            pcall(function() ReplicatedStorage.Remotes.BuyTool:InvokeServer({Password = 416817878, ToolName = tool}) end)
+        end
+    })
+end
+
+-- ============================================================
+-- =================== MUSIC TAB =============================
+-- ============================================================
+local MusicControls = Tabs.Music:AddLeftGroupbox("Controls", "music")
+local MusicSongs    = Tabs.Music:AddRightGroupbox("Song List", "list")
+
+MusicControls:AddButton({Text = "Stop Music",   Tooltip = "Stop current song",    Func = function() MusicController:Stop()   end})
+MusicControls:AddButton({Text = "Pause Music",  Tooltip = "Pause current song",   Func = function() MusicController:Pause()  end})
+MusicControls:AddButton({Text = "Resume Music", Tooltip = "Resume paused song",   Func = function() MusicController:Resume() end})
+
+MusicControls:AddSlider("MusicVol", {
+    Text = "Volume",
+    Tooltip = "Adjust music volume",
+    Default = 10,
+    Min = 1,
+    Max = 10,
+    Rounding = 0,
+    Callback = function(v) MusicController:SetVolume(v) end
+})
+
+MusicControls:AddToggle("MusicLoop", {
+    Text = "Loop Music",
+    Tooltip = "Loop the currently playing song",
+    Default = false,
+    Callback = function(s) MusicController:SetLoop(s) end
+})
+
+local songs = {
+    {Id = 101998287760411, Name = "Pahintulot"}, {Id = 113228606989893, Name = "Palaisipan"},
+    {Id = 91093214600377, Name = "Pamangulo"}, {Id = 94020244189041, Name = "Panaginip"},
+    {Id = 103186131289010, Name = "Party 4 U"}, {Id = 115245691174726, Name = "Pasko Sa Pinas"},
+    {Id = 72274749745781, Name = "Pagsamo"}, {Id = 140617637775358, Name = "Purple Hail - Akala"},
+    {Id = 107764405399357, Name = "Purple Hail - Kwento"}, {Id = 127491860913950, Name = "Purple Hail - Para"},
+    {Id = 86793099693274, Name = "Puff Me Up"}, {Id = 86700413156316, Name = "Randomantic"},
+    {Id = 99019663546064, Name = "Rebound"}, {Id = 111330689779749, Name = "Rock That Body"},
+    {Id = 112590536755182, Name = "Sabi Ko Na Barbie Eh"}, {Id = 77165853903435, Name = "Sakin Ka Pa Rin Hahalik"},
+    {Id = 78487275982635, Name = "Salamin Salamin"}, {Id = 137700948886903, Name = "Nosi Ba Lasi"},
+    {Id = 137209803817738, Name = "Siguro"}, {Id = 106174792478284, Name = "Love Attack"},
+    {Id = 78426236518475, Name = "Streets"}, {Id = 120200330391730, Name = "Thank You for the Love"},
+    {Id = 129046939580756, Name = "The Woman Who Can't Be Moved"}, {Id = 133513122565592, Name = "Til They Take My Heart Away"},
+    {Id = 121930167781964, Name = "Titibo-Tibo"}, {Id = 138013123641752, Name = "Tingin"},
+    {Id = 133257180884988, Name = "Torete"}, {Id = 104348021759246, Name = "Two Times"},
+    {Id = 75880122752181, Name = "Umaasa"}, {Id = 81426811249394, Name = "Undressed"},
+    {Id = 109046857444579, Name = "Urong Sulong"}, {Id = 105897803731104, Name = "Wala Na Pag-ibig"},
+    {Id = 105849669299967, Name = "Walang Pag-ibig"}, {Id = 137585819014180, Name = "Yellow"},
+}
+
+for _, song in ipairs(songs) do
+    MusicSongs:AddButton({
+        Text = song.Name,
+        Tooltip = "Play " .. song.Name,
+        Func = function() MusicController:Play(song.Id) end
+    })
+end
+
+-- ============================================================
+-- =================== MISC TAB ==============================
+-- ============================================================
+local MiscESP      = Tabs.Misc:AddLeftGroupbox("ESP", "eye")
+local MiscSafety   = Tabs.Misc:AddRightGroupbox("Safety Features", "shield")
+local MiscFreeCam  = Tabs.Misc:AddLeftGroupbox("Free Cam", "camera")
+local MiscUserInfo = Tabs.Misc:AddRightGroupbox("User Info", "user")
+
+MiscESP:AddToggle("PlayerESP", {
+    Text = "Player ESP",
+    Tooltip = "Show name tags above all players",
+    Default = false,
+    Callback = function(v)
+        playerEspEnabled = v
+        UpdateESP()
+    end
+})
+
+MiscESP:AddToggle("JeepESP", {
+    Text = "Jeep ESP",
+    Tooltip = "Show name tags above all jeepneys",
+    Default = false,
+    Callback = function(v)
+        jeepEspEnabled = v
+        UpdateESP()
+    end
+})
+
+MiscSafety:AddToggle("AutoLeave", {
+    Text = "Auto Leave (Admin Join)",
+    Tooltip = "Auto kick yourself when admin/staff joins",
+    Default = true,
+    Callback = function(v) autoLeaveEnabled = v end
+})
+
+MiscSafety:AddToggle("FPSBoost", {
+    Text = "Anti-Lag (FPS Boost)",
+    Tooltip = "Lower graphics to improve performance",
+    Default = false,
+    Callback = function(v)
+        if v then
+            settings().Rendering.QualityLevel = 1
+            Lighting.GlobalShadows = false
+            Lighting.FogEnd = 9e9
+            for _, desc in pairs(game:GetDescendants()) do
+                if desc:IsA("Part") or desc:IsA("UnionOperation") or desc:IsA("MeshPart") or desc:IsA("CornerWedgePart") or desc:IsA("TrussPart") then
+                    desc.Material = Enum.Material.Plastic
+                    desc.Reflectance = 0
+                elseif desc:IsA("Decal") or desc:IsA("Texture") then
+                    desc.Transparency = 1
+                elseif desc:IsA("ParticleEmitter") or desc:IsA("Trail") then
+                    desc.Enabled = false
+                end
+            end
+        else
+            Lighting.GlobalShadows = true
+            for _, desc in pairs(game:GetDescendants()) do
+                if desc:IsA("Decal") or desc:IsA("Texture") then
+                    desc.Transparency = 0
+                elseif desc:IsA("ParticleEmitter") or desc:IsA("Trail") then
+                    desc.Enabled = true
+                end
+            end
+        end
+    end
+})
+
+MiscFreeCam:AddButton({
+    Text = "Load Free Cam",
+    Tooltip = "Load free camera script",
+    Func = function()
+        loadstring(game:HttpGet("https://pastefy.app/xfVluu2u/raw"))()
+    end
+})
+
+MiscUserInfo:AddLabel("Username: " .. LocalPlayer.Name)
+MiscUserInfo:AddLabel("User ID: " .. tostring(LocalPlayer.UserId))
+MiscUserInfo:AddLabel("Account Age: " .. LocalPlayer.AccountAge .. " days")
+
+-- ============================================================
+-- =================== OTHER TAB =============================
+-- ============================================================
+local OtherLeft = Tabs.Other:AddLeftGroupbox("Server Management", "server")
+
+OtherLeft:AddButton({
+    Text = "Rejoin Server",
+    Tooltip = "Reconnect to the current server",
+    Func = function()
+        TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+    end
+})
+
+OtherLeft:AddButton({
+    Text = "Server Hop (Random)",
+    Tooltip = "Jump to a random different server",
+    Func = function()
+        local Servers = HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"))
+        for _, s in pairs(Servers.data) do
+            if s.playing < s.maxPlayers and s.id ~= game.JobId then
+                TeleportService:TeleportToPlaceInstance(game.PlaceId, s.id, LocalPlayer)
+                break
+            end
+        end
+    end
+})
+
+-- ============================================================
+-- XENON GRADIENT (UIStroke cosmetic - kept from original)
+-- ============================================================
+local THIN_BORDER = 1.0
+local WHITE_GRADIENT = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(200, 200, 200)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
+})
+local LOGO_ICON = "rbxassetid://109141925219563"
+
+local function ApplyXenonGradient(v)
+    if v:IsA("UIStroke") then
+        v.Enabled = true
+        v.Color = Color3.fromRGB(255, 255, 255)
+        local grad = v:FindFirstChild("NexifyGrad") or Instance.new("UIGradient")
+        grad.Name = "NexifyGrad"
+        grad.Color = WHITE_GRADIENT
+        grad.Rotation = 90
+        grad.Parent = v
+        if v.Parent and (v.Parent:IsA("TextLabel") or v.Parent:IsA("TextButton") or v.Parent:IsA("TextBox")) then
+            v.Thickness = 0.8
+            v.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+        else
+            v.Thickness = THIN_BORDER
+            v.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        end
+        if v.Parent and v.Parent:IsA("GuiObject") then
+            v.Parent.BorderSizePixel = 0
+        end
+    end
+end
+
+for _, v in pairs(playerGui:GetDescendants()) do ApplyXenonGradient(v) end
+playerGui.DescendantAdded:Connect(function(v) ApplyXenonGradient(v) end)
+
+-- ============================================================
+-- HUD BADGE
+-- ============================================================
+local function SendLog()
+    local target = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):WaitForChild("Screen"):WaitForChild("Labels"):WaitForChild("HungerLabels")
+    for _, child in pairs(target:GetChildren()) do
+        if child:IsA("GuiObject") or child:IsA("UIComponent") then child:Destroy() end
+    end
+    target.BackgroundTransparency = 1
+    local f = Instance.new("Frame")
+    f.Name = "Nexify_Premium"
+    f.Parent = target
+    f.Size = UDim2.new(0, 160, 0, 34)
+    f.Position = UDim2.new(0, -2, 0, -5)
+    f.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    f.BackgroundTransparency = 0.1
+    f.BorderSizePixel = 0
+    local corner = Instance.new("UICorner")
+    corner.CornerRadius = UDim.new(1, 0)
+    corner.Parent = f
+    local s = Instance.new("UIStroke")
+    s.Thickness = 2
+    s.Color = Color3.fromRGB(139, 92, 246)
+    s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    s.Parent = f
+    local icon = Instance.new("ImageLabel")
+    icon.Parent = f
+    icon.Size = UDim2.new(0, 45, 0, 18)
+    icon.Position = UDim2.new(0, 10, 0.5, -9)
+    icon.BackgroundTransparency = 1
+    icon.Image = LOGO_ICON
+    icon.ScaleType = Enum.ScaleType.Fit
+    local title = Instance.new("TextLabel")
+    title.Parent = f
+    title.Size = UDim2.new(1, -65, 0, 16)
+    title.Position = UDim2.new(0, 60, 0, 1)
+    title.Text = "NEXIFY"
+    title.TextColor3 = Color3.fromRGB(255, 255, 255)
+    title.Font = Enum.Font.GothamBold
+    title.TextSize = 12
+    title.TextXAlignment = Enum.TextXAlignment.Left
+    title.BackgroundTransparency = 1
+    local sub = Instance.new("TextLabel")
+    sub.Parent = f
+    sub.Size = UDim2.new(1, -65, 0, 16)
+    sub.Position = UDim2.new(0, 60, 0, 15)
+    sub.Text = "Free"
+    sub.TextColor3 = Color3.fromRGB(255, 255, 255)
+    sub.Font = Enum.Font.GothamBold
+    sub.TextSize = 12
+    sub.TextXAlignment = Enum.TextXAlignment.Left
+    sub.BackgroundTransparency = 1
+end
+pcall(SendLog)
+
+-- ============================================================
+-- BUTTON SOUND OVERRIDE
+-- ============================================================
+local buttonSound = game:GetService("ReplicatedStorage"):WaitForChild("Sounds"):WaitForChild("ButtonClick")
+buttonSound:Stop()
+buttonSound.SoundId = "rbxassetid://876939830"
+buttonSound.Volume = 10
+buttonSound.PlaybackSpeed = 1
+buttonSound:Play()
+buttonSound:GetPropertyChangedSignal("SoundId"):Connect(function()
+    if buttonSound.SoundId ~= "rbxassetid://876939830" then
+        buttonSound.SoundId = "rbxassetid://876939830"
+        buttonSound.Volume = 10
+    end
+end)
+
+-- ============================================================
+-- ICON REPLACEMENTS
+-- ============================================================
+local function ReplaceIcons()
+    local topLabels = playerGui:WaitForChild("Screen"):WaitForChild("Labels"):WaitForChild("TopLabels")
+    local cashLabel = topLabels:WaitForChild("Cash"):WaitForChild("ImageLabel")
+    cashLabel.Image = "rbxassetid://95066267081116"
+    local baryaLabel = topLabels:WaitForChild("Barya"):WaitForChild("ImageLabel")
+    baryaLabel.Image = "rbxassetid://71830499451478"
+end
+pcall(ReplaceIcons)
+
+-- ============================================================
+-- UI SETTINGS TAB (Obsidian ThemeManager & SaveManager)
+-- ============================================================
+local UIMenuGroup = Tabs.UISettings:AddLeftGroupbox("Menu", "wrench")
+
+UIMenuGroup:AddToggle("KeybindMenuOpen", {
+    Default = Library.KeybindFrame and Library.KeybindFrame.Visible or false,
+    Text = "Open Keybind Menu",
+    Callback = function(value)
+        if Library.KeybindFrame then Library.KeybindFrame.Visible = value end
+    end,
+})
+
+UIMenuGroup:AddToggle("ShowCustomCursor", {
+    Text = "Custom Cursor",
+    Default = true,
+    Callback = function(Value)
+        Library.ShowCustomCursor = Value
+    end,
+})
+
+UIMenuGroup:AddDropdown("NotificationSide", {
+    Values = {"Left", "Right"},
+    Default = "Right",
+    Text = "Notification Side",
+    Callback = function(Value)
+        Library:SetNotifySide(Value)
+    end,
+})
+
+UIMenuGroup:AddDropdown("DPIDropdown", {
+    Values = {"50%", "75%", "100%", "125%", "150%", "175%", "200%"},
+    Default = "100%",
+    Text = "DPI Scale",
+    Callback = function(Value)
+        Value = Value:gsub("%%", "")
+        local DPI = tonumber(Value)
+        Library:SetDPIScale(DPI)
+    end,
+})
+
+UIMenuGroup:AddDivider()
+UIMenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", {Default = "RightShift", NoUI = true, Text = "Menu keybind"})
+UIMenuGroup:AddButton("Unload", function() Library:Unload() end)
+
+Library.ToggleKeybind = Options.MenuKeybind
+
+ThemeManager:SetLibrary(Library)
+SaveManager:SetLibrary(Library)
+SaveManager:IgnoreThemeSettings()
+SaveManager:SetIgnoreIndexes({"MenuKeybind"})
+ThemeManager:SetFolder("Nexify")
+SaveManager:SetFolder("Nexify/diesel-n-steel")
+SaveManager:BuildConfigSection(Tabs.UISettings)
+ThemeManager:ApplyToTab(Tabs.UISettings)
+SaveManager:LoadAutoloadConfig()
+
+-- ============================================================
+-- STARTUP NOTIFICATION
+-- ============================================================
+Library:Notify({
+    Title = "NEXIFY",
+    Description = "Obsidian UI loaded successfully!",
+    Time = 3,
+})
